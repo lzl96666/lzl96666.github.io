@@ -1,0 +1,56 @@
+I"�<h2 id="todo-list">TODO LIST</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />整理博客</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />代码笔记</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />每日总结</li>
+</ul>
+
+<h2 id="code-notes">CODE NOTES</h2>
+
+<h3 id="nginx-命令">nginx 命令</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nginx -s stop
+
+nginx –t
+
+nginx -s stop {":"
+
+</code></pre></div></div>
+
+<h3 id="文件上传">文件上传</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sftp: put 本地文件路径 远程主机路径
+
+</code></pre></div></div>
+
+<h3 id="linux-命令">linux 命令</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 文件删除
+    rm -rf
+    -r 就是向下递归，不管有多少级目录，一并删除
+    -f 就是直接强行删除，不作任何提示的意思
+2. 解压
+    unzip zipped_file.zip
+</code></pre></div></div>
+
+<h3 id="mongodb">mongodb</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install mongodb
+
+pgrep mongo -l
+
+#Linux 服务管理两种方式service和systemctl
+sudo service mongodb stop 　　
+sudo service mongodb
+start
+
+show dbs
+
+use lzl
+
+db.name.find()
+</code></pre></div></div>
+
+<h2 id="summary">SUMMARY</h2>
+:ET
