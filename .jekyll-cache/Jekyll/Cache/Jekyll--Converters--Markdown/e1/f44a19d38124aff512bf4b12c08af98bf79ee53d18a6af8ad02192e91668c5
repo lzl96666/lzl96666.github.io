@@ -1,0 +1,6 @@
+I"�<h3 id="vueconfigjs">vue.config.js</h3>
+<p>```
+publicPath 资源根路径
+outputDir 打包输出文件夹
+assetsDir 静态资源assets文件夹</p>
+:ET

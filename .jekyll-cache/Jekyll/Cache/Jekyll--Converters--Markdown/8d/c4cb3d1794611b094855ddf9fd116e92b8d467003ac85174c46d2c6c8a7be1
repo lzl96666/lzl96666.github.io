@@ -1,0 +1,316 @@
+I"d*<h3 id="阿里云oss">阿里云OSS</h3>
+<h3 id="通过文件访问url处理图片"><a href="https://help.aliyun.com/document_detail/44686.html?spm=a2c4g.11186623.2.20.44e76969rm9CGP#concept-m4f-dcn-vdb">通过文件访问URL处理图片</a></h3>
+<p>您可以在图片的访问URL后添加相应的图片处理参数或图片样式处理图片，格式如下：
+使用图片处理参数</p>
+<ul>
+  <li>格式为：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value</li>
+  <li>https://bucketname.endpoint/objectname：Object的访问地址，获取方式请参见上传Object后如何获取访问URL。</li>
+  <li>x-oss-process=image/：固定参数，标明使用图片处理参数对图片文件进行处理。</li>
+  <li>action,parame_value：图片处理的操作（action）、参数（parame）和值（value），用于定于图片处理的方式。多个操作以正斜线（/）隔开，OSS将按图片处理参数的顺序处理图片。例如image/resize,w_200/rotate,90表示将图片先按比例缩放至宽200 px，再将图片旋转90°。图片处理支持的参数请参见处理参数。</li>
+  <li>示例：http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_300/quality,q_90</li>
+</ul>
+
+<h3 id="使用样式参数">使用样式参数</h3>
+<ul>
+  <li>格式为：https://bucketname.endpoint/objectname?x-oss-process=style/stylename
+https://bucketname.endpoint/objectname：Object的访问地址。</li>
+  <li>x-oss-process=style/：固定参数，标明使用图片样式参数对图片文件进行处理。</li>
+  <li>stylename：您提前在OSS控制台设置的样式名称，配置方法请参见t4792.html#section_qu7_jfq_ckj。</li>
+</ul>
+
+<p>示例：http://image-demo.oss-cn-hangzhou.aliyuncs.com/examplejpg?x-oss-process=style/panda_style</p>
+
+<p>若您设置了自定义分隔符，可使用分隔符代替?x-oss-process=style/内容，进一步简化图片处理URL。例如分隔符设置为感叹号（!），则图片处理URL为：&lt;https://bucketname.endpoint/objectname!stylename。自定义分隔符的配置方式请参见设置自定义分隔符。</p>
+
+<h3 id="参数">参数</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>图片处理</th>
+      <th>参数</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>图片高级压缩</td>
+      <td>format</td>
+      <td>将图片转换为HEIF或WebP M6等高压缩比格式。</td>
+    </tr>
+    <tr>
+      <td>图片缩放</td>
+      <td>resize</td>
+      <td>将图片缩放至指定大小。</td>
+    </tr>
+    <tr>
+      <td>内切圆</td>
+      <td>circle</td>
+      <td>以图片中心点为圆心，裁剪出指定大小的圆形图片。</td>
+    </tr>
+    <tr>
+      <td>自定义裁剪</td>
+      <td>crop</td>
+      <td>裁剪指定大小的矩形图片。</td>
+    </tr>
+    <tr>
+      <td>索引切割</td>
+      <td>indexcrop</td>
+      <td>按指定x或y轴的大小切分图片，之后取其中一张图片。</td>
+    </tr>
+    <tr>
+      <td>圆角矩形</td>
+      <td>rounded-corners</td>
+      <td>按指定圆角大小将图片裁剪成圆角矩形。</td>
+    </tr>
+    <tr>
+      <td>自适应方向</td>
+      <td>auto-orient</td>
+      <td>将携带旋转参数的图片进行自适应旋转。</td>
+    </tr>
+    <tr>
+      <td>旋转</td>
+      <td>rotate</td>
+      <td>按指定角度以顺时针方向旋转图片。</td>
+    </tr>
+    <tr>
+      <td>模糊效果</td>
+      <td>blur</td>
+      <td>对图片进行模糊处理。</td>
+    </tr>
+    <tr>
+      <td>亮度</td>
+      <td>bright</td>
+      <td>调整图片亮度。</td>
+    </tr>
+    <tr>
+      <td>锐化</td>
+      <td>sharpen</td>
+      <td>对图片进行锐化处理。</td>
+    </tr>
+    <tr>
+      <td>对比度</td>
+      <td>contrast</td>
+      <td>调整图片对比度。</td>
+    </tr>
+    <tr>
+      <td>渐进显示</td>
+      <td>interlace</td>
+      <td>将JPG格式的图片调整为渐进显示。</td>
+    </tr>
+    <tr>
+      <td>质量变换</td>
+      <td>quality</td>
+      <td>调整JPG和WebP格式图片的质量。</td>
+    </tr>
+    <tr>
+      <td>格式转换</td>
+      <td>format</td>
+      <td>转换图片格式。</td>
+    </tr>
+    <tr>
+      <td>图片水印</td>
+      <td>watermark</td>
+      <td>为图片添加图片或文字水印。</td>
+    </tr>
+    <tr>
+      <td>获取图片主色调</td>
+      <td>average-hue</td>
+      <td>获取图片主色调。</td>
+    </tr>
+    <tr>
+      <td>获取信息</td>
+      <td>info</td>
+      <td>获取图片信息，包括基本信息、EXIF信息。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="process">$process</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Vue from 'vue'
+/**
+ * 浏览器是否支持webp
+ * @type {boolean}
+ */
+let webpSupported = false
+
+const ResizeImage = {
+    /**
+     * 注册图片处理的全局方法 $process
+     * @param {object} _Vue vue
+     */
+    install(_Vue) {
+        /**
+         * 为图片url添加缩放、格式转换等请求参数
+         * https://help.aliyun.com/document_detail/44686.html?spm=a2c4g.11186623.6.1235.61a5c1f60U7rVj
+         * @param {string} url 图片链接
+         * @param {object} params 参数
+         * @param {string} [params.style] 预定义参数
+         * @param {number} [params.width] 等比例缩放宽度
+         * @param {boolean} [params.matchScreen=false] 默认false，图片宽度匹配屏幕分辨率，但最大不会超过1980
+         * @param {boolean} [params.webp=true] 图片转换为webp，默认true
+         * @return {string} 处理后的图片链接
+         */
+        _Vue.prototype.$process = (url, params = {}) =&gt; {
+            if (!url) {
+                return url
+            }
+
+            // 判断图片格式是否支持，不支持则返回原链接，不进行处理
+            if (!_support(url)) {
+                return url
+            }
+
+            if (url.indexOf('forucdn.com') === -1) {
+                return url
+            }
+
+            url = _modifyUrl(url)
+
+            const cmd = [
+                url,
+                // 默认增加渐进显示图片设置（interlace,1），由oss 自己判断是否渐进显示图片
+                // 渐进显示图片，只对jpg格式有效
+                (_getQuery(url) ? '&amp;' : '?') + 'x-oss-process=image/interlace,1'
+            ]
+
+            // 预定义尺寸
+            if (params.style) {
+                cmd.push(params.style)
+            }
+
+            // 图片宽度匹配屏幕分辨率，但最大不会超过1980
+            if (params.matchScreen) {
+                const width = Math.min(screen.width, 1980)
+                cmd.push(`/resize,w_${width}`)
+            }
+
+            // 等比例缩放
+            if (params.width) {
+                cmd.push(`/resize,w_${params.width}`)
+            }
+
+            // 转换为webp格式，默认不使用
+            params.webp = params.webp === undefined ? false : params.webp
+            // 由于效果图提升了图片质量，图片大小增加，使用webp图片格式来减小图片大小
+            // assets.forucdn.com 图片也使用webp
+            if (webpSupported &amp;&amp; (params.webp || url.indexOf('samples.forucdn.com') !== -1 || url.indexOf('assets.forucdn.com') !== -1)) {
+                cmd.push('/format,webp')
+            }
+
+            // 当浏览器不支持webp图片时图片使用jpeg格式
+            if (!webpSupported) {
+                cmd.push('/format,jpg')
+            }
+
+            return cmd.join('')
+        }
+    }
+}
+
+/**
+ * 获取图片参数
+ * @param {string} url 图片链接
+ * @return {string} 图片后缀
+ */
+const _getQuery = (url) =&gt; {
+    if (url.indexOf('?') === -1) return ''
+    return url.slice(url.indexOf('?'))
+}
+
+/**
+ * 判断是否支持该图片类型
+ * @param {string} url 图片链接
+ * @return {boolean} 是否支持
+ */
+const _support = (url) =&gt; {
+    const reg = /\.(jpg|jpeg|png|bmp|gif|webp|tif|tiff)$/
+    return reg.test(url.replace(_getQuery(url), ''))
+}
+
+/**
+ * 如果图片类型为原图，需要修改为缩略图的链接
+ * @param {string} url 图片链接
+ * @returns {string} 修改后的图片链接
+ * @private
+ */
+const _modifyUrl = (url) =&gt; {
+    // 移除预定义样式
+    // @todo 待后台不再传该值时可以移除
+    url = url.replace(/\!index_slider|\!index_artists_avatar|\!index_collections/, '')
+
+    if (!url.match('galleries')) {
+        return url
+    }
+
+    const char_index = url.lastIndexOf('.')
+    return url.slice(0, char_index) + '-thumb' + url.slice(char_index)
+}
+
+/**
+ * 检测客户端是否支持webp
+ * @returns {boolean} 是否支持
+ */
+const _clientSideDetectionForWebp = () =&gt; {
+    return new Promise((resolve) =&gt; {
+        const image = new Image()
+        image.onerror = () =&gt; resolve(false)
+        image.onload = () =&gt; resolve(true)
+        image.src = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA='
+
+        // // If the browser doesn't has the method createImageBitmap, you can't display webp format
+        // if(!window.createImageBitmap){
+        //     return resolve(false)
+        // }
+
+        // // Base64 representation of a white point image
+        // const webpdata = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoCAAEAAQAcJaQAA3AA/v3AgAA='
+
+        // // Retrieve the Image in Blob Format
+        // fetch(webpdata).then((response) =&gt; response.blob())
+        //     .then((blob) =&gt; {
+        //         // If the createImageBitmap method succeeds, return true, otherwise false
+        //         window.createImageBitmap(blob).then(() =&gt; resolve(true), () =&gt; resolve(false))
+        //     })
+    })
+}
+
+/**
+ * 服务端检测是否支持webp
+ * @param {object} ctx nuxt ctx
+ * @returns {boolean} 是否支持
+ * @private
+ */
+const _serverSideDetectionForWebp = (ctx) =&gt; {
+    const headers = ctx.req.headers
+    return _detectByAccept(headers.accept) || _detectByUserAgent(headers['user-agent'])
+}
+
+/**
+ * 通过headers头中的accept字段判断是否支持webp
+ * @param {string|undefined} accept accept字段值
+ * @returns {boolean} 结果
+ * @private
+ */
+const _detectByAccept = (accept) =&gt; {
+    return accept &amp;&amp; null !== accept.match('image/webp')
+}
+
+/**
+ * 通过headers头中的user-agent字段判断是否支持webp
+ * @param {string|undefined} user_agent user-agent字段值
+ * @returns {boolean} 结果
+ * @private
+ */
+const _detectByUserAgent = (user_agent) =&gt; {
+    return user_agent &amp;&amp; null !== user_agent.match(/Opera|Chrome|Firefox/)
+}
+
+export default async () =&gt; {
+    webpSupported = process.server ? false : await _clientSideDetectionForWebp()
+
+    Vue.use(ResizeImage)
+}
+
+</code></pre></div></div>
+:ET

@@ -1,0 +1,54 @@
+I"F<h1 id="关于vue-router-重载">关于vue-router 重载</h1>
+<h2 id="route-mode">route mode</h2>
+<p>mode
+类型: string</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>默认值: “hash” (浏览器环境)</td>
+      <td>“abstract” (Node.js 环境)</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>可选值: “hash”</td>
+      <td>“history”</td>
+      <td>“abstract”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>配置路由模式:</p>
+
+<p>hash: 使用 URL hash 值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器。</p>
+
+<p>history: 依赖 HTML5 History API 和服务器配置。查看 HTML5 History 模式。</p>
+
+<p>abstract: 支持所有 JavaScript 运行环境，如 Node.js 服务器端。如果发现没有浏览器的 API，路由会自动强制进入这个模式。</p>
+
+<h2 id="如果目的地和当前路由相同只有参数发生了改变">如果目的地和当前路由相同，只有参数发生了改变</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. watch $route 对象
+
+2. beforeRouteUpdate (vue-router 2.2之后)
+    组件内的守卫：
+    beforeRouteEnter
+    beforeRouteUpdate (2.2 新增)
+    beforeRouteLeave
+
+3. &lt;view-router :key="$route.fullpath" /&gt; 刷新整个组件 
+
+</code></pre></div></div>
+
+<h2 id="如果目的地和当前路由相同且参数一致">如果目的地和当前路由相同，且参数一致</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>主动刷新
+1. window.location.reload()
+2. 点击按钮跳转一个空白页，然后再马上跳回来
+3. &lt;router-view v-if="isRouterAlive"&gt;&lt;/router-view&gt;  provide/inject 向子组件提供方法
+
+带时间参数：new Date().getTime()
+</code></pre></div></div>
+:ET

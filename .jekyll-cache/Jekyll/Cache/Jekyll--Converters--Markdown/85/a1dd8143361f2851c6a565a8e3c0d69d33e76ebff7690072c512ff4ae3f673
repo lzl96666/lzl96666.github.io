@@ -1,0 +1,9 @@
+I"�<h2 id="查看shell">查看shell</h2>
+<p>cat /etc/shells
+```
+Last login: Wed Dec  2 15:04:03 on ttys009
+forudev@forudevdeMac-mini ~ % cat /etc/shells</p>
+<h1 id="list-of-acceptable-shells-for-chpass1">List of acceptable shells for chpass(1).</h1>
+<h1 id="ftpd-will-not-allow-users-to-connect-who-are-not-using">Ftpd will not allow users to connect who are not using</h1>
+<h1 id="one-of-these-shells">one of these shells.</h1>
+:ET

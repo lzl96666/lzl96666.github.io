@@ -1,0 +1,88 @@
+I"(
+<h2 id="开发流程">开发流程</h2>
+
+<ol>
+  <li>写组件</li>
+  <li>webpack 打包</li>
+  <li>npm build</li>
+  <li>npm pack =&gt; npm install xxx.tgz</li>
+  <li>.ngmignore 忽略</li>
+  <li>npm login</li>
+  <li>npm publish</li>
+</ol>
+
+<h2 id="packagejson-配置">package.json 配置</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name：项目名字
+
+version： 版本号
+
+description： 项目介绍
+
+main： 项目的入口文件 (指向js文件)
+
+scripts： npm提供给我们运行shell命令的入口
+
+author：作者
+
+license：标注我们项目的许可证权限，如果不想开源（{"license":"UNLICENSED"}或{"private":true}）
+
+dependencies：项目运行时必要依赖，
+
+peerDependencies： 针对特定版本开发
+
+devDependencies：项目开发时所需依赖
+
+homepage：项目主页的网址
+
+files：将软件包作为依赖项安装时要包含的条目
+</code></pre></div></div>
+
+<h2 id="vueconfigjs-配置-"><a href="https://cli.vuejs.org/zh/config/#outputdir">vue.config.js 配置 </a></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>module.exports = process.env.NODE_ENV === 'production' ? {
+  publicPath: '/dist/',
+  // webpack配置
+  configureWebpack: {
+    optimization: {
+      splitChunks: false
+    },
+    entry: entries[Number(process.env.VUE_APP_DESIGNER_TYPE_INDEX)],
+    // 输出
+    output: {
+      // path.resolve() 方法将路径或路径片段的序列解析为绝对路径。
+      // __dirname 当前模块的目录名
+      path: path.resolve(__dirname, 'dist'),
+      // 决定了每个输出 bundle 的名称
+      filename: 'index.min.js',
+      publicPath: '/dist/',
+      // libraryTarget: 'umd' - 将你的 library 暴露为所有的模块定义下都可运行的方式。它将在 CommonJS, AMD 环境下运行，或将模块导出到 global 下的变量
+      // 省略 library 会导致将入口起点返回的所有属性，直接赋值给 root 对象
+      libraryTarget: 'umd'
+    }
+  },
+  css: {
+    extract: false
+  }
+} : {}
+
+
+</code></pre></div></div>
+
+<h2 id="webpack-服务器配置">webpack 服务器配置</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const path = require('path')
+module.exports = {
+    entry: {
+        app1: ['./src/index.js'],
+        app2: ['./src/index2.js']
+    },
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/dist',
+        filename: '[name].js'
+    }
+}
+
+</code></pre></div></div>
+:ET

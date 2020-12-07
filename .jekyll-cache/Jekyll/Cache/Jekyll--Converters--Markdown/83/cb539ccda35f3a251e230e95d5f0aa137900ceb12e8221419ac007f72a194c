@@ -1,0 +1,15 @@
+I"q<h1 id="时间复杂度">时间复杂度</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>常数阶O(1)
+对数阶O(logN)
+线性阶O(n)
+线性对数阶O(nlogN)
+平方阶O(n²)
+立方阶O(n³)
+K次方阶O(n^k)
+指数阶(2^n)
+
+</code></pre></div></div>
+<h1 id="空间复杂度">空间复杂度</h1>
+<p>todo
+##</p>
+:ET

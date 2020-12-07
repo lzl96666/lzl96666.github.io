@@ -1,0 +1,84 @@
+I"Z<h3 id="http请求头和响应头详解">HTTP请求头和响应头详解</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Genenral
+
+Request URL: https://i.forudesigns.cn/api/v1/business/admin
+Request Method: GET
+Status Code: 200 
+Remote Address: 47.96.227.110:443
+Referrer Policy: strict-origin-when-cross-origin
+
+Response Headers
+
+access-control-allow-headers: *, x-requested-with, origin, authorization, x-foru-session, x-foru-business-domain, content-type, accept
+access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
+access-control-allow-origin: *
+cache-control: no-cache, private
+content-encoding: gzip
+content-type: application/json
+date: Mon, 30 Nov 2020 04:00:42 GMT
+server: nginx
+strict-transport-security: max-age=63072000; includeSubdomains; preload
+vary: Accept-Encoding
+x-execution-time: 58ms
+
+Request Headers
+
+:authority: i.forudesigns.cn
+:method: GET
+:path: /api/v1/business/admin
+:scheme: https
+accept: application/json, text/plain, */*
+accept-encoding: gzip, deflate, br
+accept-language: en
+origin: http://127.0.0.1:3000
+referer: http://127.0.0.1:3000/
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
+</code></pre></div></div>
+
+<h3 id="cache-control">cache-control:</h3>
+<ul>
+  <li>public 任何客户端, 包括中间代理, 比如cdn</li>
+  <li>private 浏览器</li>
+  <li>no-cache 不建议缓存,每次请求需要与服务器验证是否过期</li>
+  <li>no-store, 不要缓存</li>
+  <li>max-age, 缓存时间,从第一次请求时间开始计算, 单位为s</li>
+  <li>immutable, 在有效期内,不会发生变化</li>
+</ul>
+
+<ol>
+  <li>
+    <p>不要缓存, 同时清空旧缓存
+Cache-Control: no-store, max-age=0</p>
+  </li>
+  <li>
+    <p>允许各种客户端缓存内容
+Cache-Control: public, max-age=604800, immutable
+[在604800 seconds = 7 days, 文件不会发生变化, 这期间内不用再发额外请求与服务端验证]</p>
+  </li>
+</ol>
+
+<h3 id="accept-encoding">Accept-Encoding</h3>
+
+<p>解码</p>
+
+<h3 id="origin-和-referer">Origin 和 referer</h3>
+
+<p>Origin 请求发起</p>
+
+<p>Referer 来源-可用于防盗链</p>
+
+<h3 id="connection--keepalive">Connection = keepalive</h3>
+
+<p>如果要在HTTP1.0中支持keep alive，你必须明确的在header中加入Connection:keep-alive。</p>
+
+<p>1.client 发起一个包含Connection:keep-alive的请求</p>
+
+<p>2.server收到请求后，如果server支持keepalive，回复一个包含Connection:keep-alive的响应，不关闭连接，否则回复一个包含Connection:close的响应，关闭连接。</p>
+
+<p>3.如果client收到包含Connection:keep-alive的响应，向同一个连接发送下一个请求，直到一方主动关闭连接。</p>
+
+<p>因为keepalive在很多情况下能够重用连接，减少资源消耗，缩短响应时间。所以在HTTP1.1中缺省就是支持keepalive的，如果响应方不 支持keepalive,需要明确的标识Connection:close，Connection:keep-alive就没什么意义了。</p>
+:ET

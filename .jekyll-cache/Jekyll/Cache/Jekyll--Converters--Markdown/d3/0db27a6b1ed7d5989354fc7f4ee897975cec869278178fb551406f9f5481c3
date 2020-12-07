@@ -1,0 +1,36 @@
+I"�<h3 id="vueconfigjs">vue.config.js</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>publicPath 资源根路径
+outputDir 打包输出文件夹
+assetsDir 静态资源assets文件夹
+
+</code></pre></div></div>
+<h3 id="关于nuxt-部署">关于nuxt 部署</h3>
+
+<ol>
+  <li>spa部署
+```
+将nuxt.config.js中的mode更改为spa。
+运行 npm run build.
+自动生成dist/文件夹，部署到您的服务器，如 Surge，GitHub Pages 或 nginx。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+2. ssr部署
+</code></pre></div></div>
+<p>nuxt build</p>
+
+<p>//将以下文件部署到服务器
+.nuxt
+static
+nuxt.config.js
+package.json
+server/index</p>
+
+<p>nuxt start</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3. 静态部署
+</code></pre></div></div>
+<p>npm run generate</p>
+
+<p>```</p>
+:ET

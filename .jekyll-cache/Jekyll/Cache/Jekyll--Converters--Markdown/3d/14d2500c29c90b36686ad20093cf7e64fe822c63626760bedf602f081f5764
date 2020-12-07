@@ -1,0 +1,69 @@
+I"
+
+<html>
+ <center style="background: linear-gradient(to top right, #CDDC39 0%, #8BC34A 25%, #FFEB3B 100%);color:white"><h1>TODAY'S WOKE</h1></center>
+ <div>2019年10月16日10:11:00</div>
+</html>
+
+<h2 id="todo-list">TODO LIST</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />整理博客</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />代码笔记</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />每日总结</li>
+</ul>
+
+<h2 id="code-notes">CODE NOTES</h2>
+<h3 id="关于依赖">关于依赖</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>关于YARN和NPM镜像
+
+1, 我们使用yarn来管理依赖.
+
+2, npm镜像, 一开始使用的是npm.taobao.org, 但是使用中发现时常出现抽风的情况,时而下载成功,时而下载失败
+
+3, 后来使用了自己搭的镜像4u2-npm, 但是要自己手工修改yarn.lock
+
+4, 最近发现 https://mirrors.huaweicloud.com/ 镜像不错, 也在一两个项目中使用了一段时间, 挺稳定. 现决定全面切换.
+
+
+步骤:
+
+
+1, 安装依赖时, 经常卡在building fresh packages, 一般是node_sass, node_gyp, @sentry/cli 下载超时问题.
+
+解决方法, 除了registry, 需要额外定义CDN地址, 在项目根目录下创建 .yarnrc
+
+sass_binary_site "https://mirrors.huaweicloud.com/node-sass/"
+registry "https://mirrors.huaweicloud.com/repository/npm/"
+sentrycli_cdnurl "https://npm.taobao.org/mirrors/sentry-cli/"
+disturl "https://mirrors.huaweicloud.com/nodejs/"
+ignore-optional true
+ignore-engine true
+
+
+2, 删除rm -fr yarn.lock node_modules
+
+3, 重新安装依赖. 线上使用的完整命令, yarn install --verbose --ignore-engines --ignore-optional （可选包不安装）
+
+4, 测试下项目能不能在测试模式下跑起来, 比如yarn run dev
+package.json
+
+
+dependencies 和 devDependencies
+
+1, 清理不需要依赖
+
+2, 整理, 属于dev的库就应该放到devDependencies里面
+
+ 目前, 线上也会安装devDependencies, 这是不对的, 应该只安装dependencies. 
+
+3, rm -fr yarn.lock node_modules ; yarn install --verbose --ignore-engines --ignore-optional --prod
+
+ --prod 代表只安装dependencies 
+
+4, 测试下项目能不能在 ＊生产模式 下跑起来, 比如yarn run build 或者 yarn run generate
+</code></pre></div></div>
+
+<h2 id="summary">SUMMARY</h2>
+
+:ET
