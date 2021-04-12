@@ -1,0 +1,38 @@
+I"-<h3 id="safe-area">Safe area</h3>
+
+<p><img src="https://img-blog.csdnimg.cn/img_convert/82f6c4e3ebf95bfedf0b4c2619938c2b.png" alt="image" /></p>
+
+<h3 id="适配">适配</h3>
+
+<p>iphoneX 的“刘海”为相机和其他组件留出了空间，同时在底部也留有可操作区域。那么网站边尴尬了~被限制在了这样的“安全区域”内，两边会出现一道白条。
+解决的方案是：</p>
+
+<p>1、给 body 添加一个 background；</p>
+
+<p>2、添加 viewport-fit=cover meta 标签，使页面占满整个屏幕。
+(思考 contain 与 cover 的区别)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"&gt;
+</code></pre></div></div>
+
+<p>为了处理这些需求，iOS 11 的 Safari 引入了一些 constant 来处理 viewport-fit=cover 属性。</p>
+
+<ul>
+  <li>safe-area-inset-top</li>
+  <li>safe-area-inset-right</li>
+  <li>safe-area-inset-left</li>
+  <li>safe-area-inset-bottom</li>
+</ul>
+
+<p>constant()是用在 iOS11.2 之前版本中的，env()是用在 iOS11.2 及之后版本中的。为了向后兼容，env()和 constant()需要同时存在，而且顺序为 constant()在前，env()在后，如下所示：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>div {
+  padding-bottom:constant(safe-area-inset-bottom);  兼容 iOS padding-bottom:
+  padding-bottom:env(safe-area-inset-bottom);兼容   iOS &gt;= 11.2
+}
+</code></pre></div></div>
+
+<p>这些值可以应用到 margin、padding 上，也可以应用到绝对定位的 top 或 left 上。</p>
+
+<p>padding: constant(safe-area-inset-top) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left);</p>
+:ET

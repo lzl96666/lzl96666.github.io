@@ -1,0 +1,73 @@
+I"�<ol>
+  <li>安装</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 如果使用模块系统 (例如通过 vue-cli)，则需要导入 Vue 和 VueI18n ，然后调用 Vue.use(VueI18n)。
+// import Vue from 'vue'
+// import VueI18n from 'vue-i18n'
+//
+// Vue.use(VueI18n)
+
+// 准备翻译的语言环境信息
+const messages = {
+  en: {
+    message: {
+      hello: 'hello world'
+    }
+  },
+  ja: {
+    message: {
+      hello: 'こんにちは、世界'
+    }
+  }
+}
+
+// 通过选项创建 VueI18n 实例
+const i18n = new VueI18n({
+  locale: 'ja', // 设置地区
+  messages // 设置地区信息
+})
+
+
+// 通过 `i18n` 选项创建 Vue 实例
+new Vue({ i18n }).$mount('#app')
+</code></pre></div></div>
+
+<ol>
+  <li>使用</li>
+</ol>
+
+<ul>
+  <li>
+    <p>具名格式</p>
+  </li>
+  <li>
+    <p>列表格式</p>
+  </li>
+  <li>
+    <p>组件插值</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>列表格式： {0}
+
+&lt;div id="app"&gt;
+  &lt;!-- ... --&gt;
+  &lt;i18n path="term" tag="label" for="tos"&gt;
+    &lt;a :href="url" target="_blank"&gt;&lt;/a&gt;
+  &lt;/i18n&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+具名格式：place {url}
+
+&lt;div id="app"&gt;
+  &lt;!-- ... --&gt;
+  &lt;i18n path="term" tag="label" for="tos"&gt;
+    &lt;a :href="url" target="_blank" place="url"&gt;&lt;/a&gt;
+  &lt;/i18n&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;
+
+</code></pre></div></div>
+:ET

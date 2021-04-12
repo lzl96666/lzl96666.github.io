@@ -1,0 +1,70 @@
+I"�<h3 id="shopify-oauth-授权流程">shopify oauth 授权流程</h3>
+<ol>
+  <li>点击安装 跳转至授权页面 并携带 {hmac}{shop} {timestamp}</li>
+  <li>用这三个参数请求去授权url
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://{shop}.myshopify.com/admin/oauth/authorize?client_id={api_key}&amp;scope={scopes}&amp;redirect_uri={redirect_uri}&amp;state={nonce}&amp;grant_options[]={access_mode}  
+可获得code state
+</code></pre></div>    </div>
+  </li>
+  <li>商户授权之后， 回到你的 url，有个 code， 你要用这个 code 去 shopify 换取 access token， 这个 token 需要保存下来。</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST https://{shop}.myshopify.com/admin/oauth/access_token
+
+client_id: The API key for the app, as defined in the Partner Dashboard.
+client_secret: The API secret key for the app, as defined in the Partner Dashboard.
+code: The authorization code provided in the redirect.
+
+</code></pre></div></div>
+
+<p>测试号 83413770 a19950326.</p>
+
+<h3 id="应用加载时-storeindex">应用加载时 /store/index</h3>
+<ol>
+  <li>是否登陆</li>
+  <li>登陆的情况下是否已授权</li>
+  <li>已授权的情况下 保存授权信息</li>
+</ol>
+
+<h3 id="shopifylogin">Shopify/login</h3>
+<p>/shopify/login?hmac={hmac}&amp;shop={hmac}&amp;timestamp={hmac}</p>
+
+<p>1.中间件 shopify-not-authenticated</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shopify根据授权信息判断已授权？ 跳回shopify后台||进入
+</code></pre></div></div>
+
+<p>2.登录</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.是否授权 
+2.是=&gt;跳回shopify后台||进入
+2.否=&gt;是否含有授权参数
+3.有授权参数=&gt;登录=&gt;跳回shopify后台||进入
+3.没有授权参数=&gt;获取授权URL=&gt;页面整个跳转
+</code></pre></div></div>
+
+<p>https://shop/admin/apps/test-forudesigns-app</p>
+
+<h3 id="流程图"><a href="https://www.edrawsoft.cn/viewer/public/s/max/c6485344785822">流程图</a></h3>
+
+<h3 id="其他登陆权限">其他登陆权限</h3>
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />商店名称：y@yopmail.com-子账号。Jael.123</p>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />商店名称：test1218@yopmail.com-审核失败用户。123456</p>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />商店名称：test01@yopmail.com-试用过期等待审核用户。123456</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />商店名称：16082700864111garciamark@wright.net——C端普通用户。123456</li>
+  <li></li>
+</ul>
+
+<p>https://forudesigns-spy-test2.myshopify.com/admin/oauth/authorize?
+client_id=b98929ccdad545f296c41da25391fcb8&amp;
+scope=read_orders%2Cwrite_orders%2Cread_products%2Cwrite_products%2Cread_inventory%2Cwrite_inventory&amp;
+redirect_uri=https%3A%2F%2Fb.forudesigns.cn%2Fshopify%2Flogin&amp;
+state=QVzYlmXzVkfzVYp8</p>
+:ET

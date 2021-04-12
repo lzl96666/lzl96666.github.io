@@ -1,0 +1,101 @@
+I"�<h3 id="安装">安装</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm i --save lodash
+
+</code></pre></div></div>
+
+<h3 id="在vue中注册">在vue中注册</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//plugins/lodash
+const groupBy = require('lodash/groupBy')
+const cloneDeep = require('lodash/cloneDeep')
+const max = require('lodash/max')
+const min = require('lodash/min')
+const flatten = require('lodash/flatten')
+const throttle = require('lodash/throttle')
+const debounce = require('lodash/debounce')
+global._ = {
+    groupBy,
+    cloneDeep,
+    max,
+    min,
+    flatten,
+    throttle,
+    debounce
+}
+
+let lodash = {}
+lodash.install = function(Vue, options) {
+    Vue.prototype._ = global._
+}
+export default lodash
+
+
+</code></pre></div></div>
+
+<h3 id="groupbycollection-iterateeidentity"><em>.groupBy(collection, [iteratee=</em>.identity]</h3>
+<ol>
+  <li>参数</li>
+</ol>
+
+<table>
+  <tbody>
+    <tr>
+      <td>collection (Array</td>
+      <td>Object): 一个用来迭代的集合。</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[iteratee=_.identity] (Array</td>
+      <td>Function</td>
+      <td>Object</td>
+      <td>string): 这个迭代函数用来转换key。</td>
+    </tr>
+  </tbody>
+</table>
+
+<ol>
+  <li>例子
+```
+_.groupBy([6.1, 4.2, 6.3], Math.floor);
+// =&gt; { ‘4’: [4.2], ‘6’: [6.1, 6.3] }</li>
+</ol>
+
+<p>// The <code class="language-plaintext highlighter-rouge">_.property</code> iteratee shorthand.
+_.groupBy([‘one’, ‘two’, ‘three’], ‘length’);
+// =&gt; { ‘3’: [‘one’, ‘two’], ‘5’: [‘three’] }</p>
+
+<p>_.groupBy(this.shoes,  (item)=&gt;item.color)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+### _.throttle
+一段时间内只执行一次
+</code></pre></div></div>
+<p>_.throttle(func, [wait=0], [options=])#</p>
+
+<p>func (Function): 要节流的函数。
+[wait=0] (number): 需要节流的毫秒。
+[options=] (Object): 选项对象。
+[options.leading=true] (boolean): 指定调用在节流开始前。
+[options.trailing=true] (boolean): 指定调用在节流结束后。</p>
+
+<p>// 元素滚动 避免频繁计算造成计算浪费
+this.scroll = _.throttle(this.scroll,300)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>### _.debounce
+最后一次xx时间后执行
+</code></pre></div></div>
+<p>_.debounce(func, [wait=0], [options=])#</p>
+
+<p>func (Function): 要防抖动的函数。
+[wait=0] (number): 需要延迟的毫秒数。
+[options=] (Object): 选项对象。
+[options.leading=false] (boolean): 指定在延迟开始前调用。
+[options.maxWait] (number): 设置 func 允许被延迟的最大值。（类似节流）
+[options.trailing=true] (boolean): 指定在延迟结束后调用。</p>
+
+<p>// 元素滚动 停止后300ms才计算
+this.scroll = _.throttle(this.scroll,300)</p>
+
+<p>```</p>
+:ET

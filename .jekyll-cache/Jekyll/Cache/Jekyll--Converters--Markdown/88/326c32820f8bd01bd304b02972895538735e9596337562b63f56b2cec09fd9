@@ -1,0 +1,64 @@
+I"<ol>
+  <li>将本地映射到修改的host
+```
+mac修改host</li>
+</ol>
+
+<p>127.0.0.1       api.demo.com</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+2. 本地https快速解决方案——mkcert
+</code></pre></div></div>
+<p>1.安装
+brew install mkcert
+2.生成自签证书
+mkcert domain1 [domain2 […]]
+3.node服务器
+var https = require(‘https’)
+var fs = require(‘fs’)
+var privateKey = fs.readFileSync(‘/Users/forudev/api.demo.com-key.pem’)
+var certificate = fs.readFileSync(‘/Users/forudev/api.demo.com.pem’)
+var credentials = { key: privateKey, cert: certificate }
+https.createServer(credentials, app).listen(8443)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+demo:
+</code></pre></div></div>
+<p>const express = require(‘express’)
+const { Nuxt, Builder } = require(‘nuxt’)
+var https = require(‘https’)
+var fs = require(‘fs’)
+var privateKey = fs.readFileSync(‘/Users/forudev/api.demo.com-key.pem’)
+var certificate = fs.readFileSync(‘/Users/forudev/api.demo.com.pem’)
+var credentials = { key: privateKey, cert: certificate }
+const app = express()</p>
+
+<p>// Import and Set Nuxt.js options
+const config = require(‘../nuxt.config.js’)</p>
+
+<p>config.dev = !(process.env.NODE_ENV === ‘production’)</p>
+
+<p>async function start() {
+    // Init Nuxt.js
+    const nuxt = new Nuxt(config)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const { host = process.env.HOST || '127.0.0.1', port = process.env.PORT || 3100 } = nuxt.options.server
+
+// Build only in dev mode
+if (config.dev) {
+    const builder = new Builder(nuxt)
+    await builder.build()
+}
+
+// Give nuxt middleware to express
+app.use(nuxt.render)
+
+// Listen the server
+app.listen(port, host)
+https.createServer(credentials, app).listen(8443)
+
+console.log(`Server listening on http://${host}:${port}`) // eslint-disable-line no-console } start()
+</code></pre></div></div>
+
+<p>```</p>
+:ET

@@ -1,0 +1,9 @@
+I"�<h1 id="sentry">Sentry</h1>
+<ol>
+  <li>安装 yarn add @sentry/browser @sentry/tracing</li>
+  <li>Sentry.init({
+  dsn: “https://examplePublicKey@o0.ingest.sentry.io/0”,
+})</li>
+  <li>use: Sentry.captureException(err)</li>
+</ol>
+:ET

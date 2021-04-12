@@ -1,0 +1,51 @@
+I":<h2 id="字体图标">字体图标</h2>
+<ol>
+  <li>
+    <p>引入字体图标</p>
+  </li>
+  <li>
+    <p>字体图标类引用字体图标</p>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[class^='foruicon-'],
+[class*=' foruicon-'] {
+    color: inherit;
+
+    font-family: 'foruicon' !important;
+    font-weight: normal !important;
+    font-style: normal;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+</code></pre></div></div>
+
+<ol>
+  <li>使用
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;span class="foruicon-test" /&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="优化">优化</h2>
+
+<p>element-icons 默认图标很多没有使用</p>
+
+<p>使用https://kekee000.github.io/fonteditor/#进行筛选</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        &lt;link href="https://assets.forucdn.com/fonts/20210128/element-icons.woff2" rel="preload" as="font" type="font/woff2" crossorigin="anonymous"/&gt; 
+      
+        &lt;style&gt;
+            @font-face {
+                font-family: "element-icons";
+                src: url(https://assets.forucdn.com/fonts/20210128/element-icons.woff2) format("woff2"),
+                     url(https://assets.forucdn.com/fonts/20210128/element-icons.woff) format("woff");
+                font-weight: 400;
+                font-style: normal;
+            }
+        &lt;/style&gt;
+
+</code></pre></div></div>
+:ET

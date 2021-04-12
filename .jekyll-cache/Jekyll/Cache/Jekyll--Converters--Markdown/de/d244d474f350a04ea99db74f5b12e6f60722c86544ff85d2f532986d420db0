@@ -1,0 +1,11 @@
+I"�<h3 id="shopify-oauth-授权流程">shopify oauth 授权流程</h3>
+<ol>
+  <li>点击安装 跳转至授权页面 并携带 {hmac}{shop} {timestamp}</li>
+  <li>用这三个参数请求去授权url
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://{shop}.myshopify.com/admin/oauth/authorize?client_id={api_key}&amp;scope={scopes}&amp;redirect_uri={redirect_uri}&amp;state={nonce}&amp;grant_options[]={access_mode}  
+可获得code state
+</code></pre></div>    </div>
+  </li>
+  <li>商户授权之后， 回到你的 url，有个 code， 你要用这个 code 去 shopify 换取 access token， 这个 token 需要保存下来。</li>
+</ol>
+:ET

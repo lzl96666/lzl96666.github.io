@@ -1,0 +1,27 @@
+I",<h1 id="1-初始化">1. 初始化</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> const canvas = new fabric.Canvas(id, {
+    stateful: true, // 保存对象状态
+    selection: false // 
+  })
+  //添加其他自用属性
+  canvasParams
+  
+</code></pre></div></div>
+<h1 id="2-框角">2. 框角</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fabric.Object.prototype.controls[direction] = new fabric.Control({
+    x: fabric.Object.prototype.controls[direction].x,
+    y: fabric.Object.prototype.controls[direction].y,
+    cursorStyle: cursor ? cursor : 'pointer',
+    actionHandler,
+    mouseUpHandler,
+    render: renderIcon,
+    // 自定义属性，用于 renderIcon
+    iconEl: icon_element,
+    cornerSize: 24
+})
+</code></pre></div></div>
+<h1 id="3-图像">3. 图像</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> fabric.Image.fromURL(imageUrl,img=&gt;{})
+ 
+</code></pre></div></div>
+:ET

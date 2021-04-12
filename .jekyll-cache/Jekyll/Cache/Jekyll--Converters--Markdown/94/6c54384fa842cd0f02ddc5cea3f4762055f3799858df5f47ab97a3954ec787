@@ -1,26 +1,30 @@
-I"d*<h3 id="阿里云oss">阿里云OSS</h3>
-<h3 id="通过文件访问url处理图片"><a href="https://help.aliyun.com/document_detail/44686.html?spm=a2c4g.11186623.2.20.44e76969rm9CGP#concept-m4f-dcn-vdb">通过文件访问URL处理图片</a></h3>
-<p>您可以在图片的访问URL后添加相应的图片处理参数或图片样式处理图片，格式如下：
+I"�*<h3 id="阿里云-oss">阿里云 OSS</h3>
+
+<h3 id="通过文件访问-url-处理图片"><a href="https://help.aliyun.com/document_detail/44686.html?spm=a2c4g.11186623.2.20.44e76969rm9CGP#concept-m4f-dcn-vdb">通过文件访问 URL 处理图片</a></h3>
+
+<p>您可以在图片的访问 URL 后添加相应的图片处理参数或图片样式处理图片，格式如下：
 使用图片处理参数</p>
+
 <ul>
   <li>格式为：https://bucketname.endpoint/objectname?x-oss-process=image/action,parame_value</li>
   <li>https://bucketname.endpoint/objectname：Object的访问地址，获取方式请参见上传Object后如何获取访问URL。</li>
   <li>x-oss-process=image/：固定参数，标明使用图片处理参数对图片文件进行处理。</li>
-  <li>action,parame_value：图片处理的操作（action）、参数（parame）和值（value），用于定于图片处理的方式。多个操作以正斜线（/）隔开，OSS将按图片处理参数的顺序处理图片。例如image/resize,w_200/rotate,90表示将图片先按比例缩放至宽200 px，再将图片旋转90°。图片处理支持的参数请参见处理参数。</li>
+  <li>action,parame_value：图片处理的操作（action）、参数（parame）和值（value），用于定于图片处理的方式。多个操作以正斜线（/）隔开，OSS 将按图片处理参数的顺序处理图片。例如 image/resize,w_200/rotate,90 表示将图片先按比例缩放至宽 200 px，再将图片旋转 90°。图片处理支持的参数请参见处理参数。</li>
   <li>示例：http://image-demo.oss-cn-hangzhou.aliyuncs.com/example.jpg?x-oss-process=image/resize,w_300/quality,q_90</li>
 </ul>
 
 <h3 id="使用样式参数">使用样式参数</h3>
+
 <ul>
   <li>格式为：https://bucketname.endpoint/objectname?x-oss-process=style/stylename
 https://bucketname.endpoint/objectname：Object的访问地址。</li>
   <li>x-oss-process=style/：固定参数，标明使用图片样式参数对图片文件进行处理。</li>
-  <li>stylename：您提前在OSS控制台设置的样式名称，配置方法请参见t4792.html#section_qu7_jfq_ckj。</li>
+  <li>stylename：您提前在 OSS 控制台设置的样式名称，配置方法请参见 t4792.html#section_qu7_jfq_ckj。</li>
 </ul>
 
 <p>示例：http://image-demo.oss-cn-hangzhou.aliyuncs.com/examplejpg?x-oss-process=style/panda_style</p>
 
-<p>若您设置了自定义分隔符，可使用分隔符代替?x-oss-process=style/内容，进一步简化图片处理URL。例如分隔符设置为感叹号（!），则图片处理URL为：&lt;https://bucketname.endpoint/objectname!stylename。自定义分隔符的配置方式请参见设置自定义分隔符。</p>
+<p>若您设置了自定义分隔符，可使用分隔符代替?x-oss-process=style/内容，进一步简化图片处理 URL。例如分隔符设置为感叹号（!），则图片处理 URL 为：&lt;https://bucketname.endpoint/objectname!stylename。自定义分隔符的配置方式请参见设置自定义分隔符。</p>
 
 <h3 id="参数">参数</h3>
 
@@ -36,7 +40,7 @@ https://bucketname.endpoint/objectname：Object的访问地址。</li>
     <tr>
       <td>图片高级压缩</td>
       <td>format</td>
-      <td>将图片转换为HEIF或WebP M6等高压缩比格式。</td>
+      <td>将图片转换为 HEIF 或 WebP M6 等高压缩比格式。</td>
     </tr>
     <tr>
       <td>图片缩放</td>
@@ -56,7 +60,7 @@ https://bucketname.endpoint/objectname：Object的访问地址。</li>
     <tr>
       <td>索引切割</td>
       <td>indexcrop</td>
-      <td>按指定x或y轴的大小切分图片，之后取其中一张图片。</td>
+      <td>按指定 x 或 y 轴的大小切分图片，之后取其中一张图片。</td>
     </tr>
     <tr>
       <td>圆角矩形</td>
@@ -96,12 +100,12 @@ https://bucketname.endpoint/objectname：Object的访问地址。</li>
     <tr>
       <td>渐进显示</td>
       <td>interlace</td>
-      <td>将JPG格式的图片调整为渐进显示。</td>
+      <td>将 JPG 格式的图片调整为渐进显示。</td>
     </tr>
     <tr>
       <td>质量变换</td>
       <td>quality</td>
-      <td>调整JPG和WebP格式图片的质量。</td>
+      <td>调整 JPG 和 WebP 格式图片的质量。</td>
     </tr>
     <tr>
       <td>格式转换</td>
@@ -121,12 +125,13 @@ https://bucketname.endpoint/objectname：Object的访问地址。</li>
     <tr>
       <td>获取信息</td>
       <td>info</td>
-      <td>获取图片信息，包括基本信息、EXIF信息。</td>
+      <td>获取图片信息，包括基本信息、EXIF 信息。</td>
     </tr>
   </tbody>
 </table>
 
 <h3 id="process">$process</h3>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import Vue from 'vue'
 /**
  * 浏览器是否支持webp

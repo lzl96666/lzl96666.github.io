@@ -1,0 +1,78 @@
+I"�<h1 id="1-初始化">1. 初始化</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> const canvas = new fabric.Canvas(id, {
+    stateful: true, // 保存对象状态
+    selection: false // 
+  })
+  //添加其他自用属性
+  canvasParams
+  
+</code></pre></div></div>
+<h1 id="2-框角">2. 框角</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fabric.Object.prototype.controls[direction] = new fabric.Control({
+    x: fabric.Object.prototype.controls[direction].x,
+    y: fabric.Object.prototype.controls[direction].y,
+    cursorStyle: cursor ? cursor : 'pointer',
+    actionHandler,
+    mouseUpHandler,
+    render: renderIcon,
+    // 自定义属性，用于 renderIcon
+    iconEl: icon_element,
+    cornerSize: 24
+})
+</code></pre></div></div>
+<h1 id="3-图像">3. 图像</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> fabric.Image.fromURL(imageUrl,img=&gt;{})
+ 
+</code></pre></div></div>
+
+<h1 id="4-文字">4. 文字</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>new fabric.IText
+</code></pre></div></div>
+<h1 id="5-背景图">5. 背景图</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>使用Pattern填充Rect
+fabric.util.loadImage
+
+    fabric.util.loadImage(
+        'https://assets.forucdn.com/galleries/190/19700101000000-joxotTcMBm-thumb.jpeg?x-oss-process=image/interlace,1/resize,w_600/format,webp',
+            (img) =&gt; {
+                this.rect = new fabric.Rect({
+                    hasControls: false,
+                    *fill: new fabric.Pattern({
+                        source: img,
+                        repeat: 'repeat',
+                        patternTransform: [1, 0, 0, 1, 0, 0]
+                
+                    }),
+                    left: 0,
+                    top: 0,
+                    width: this.canvas.width,
+                    height: this.canvas.height,
+                    // 不缓存，避免因缓存图片模糊
+                    objectCaching: false,
+                    selectable: false
+                })
+                this.canvas.add(this.rect)
+                this.canvas.moveTo(this.rect, 0)
+
+                this.canvas.renderAll()
+                },
+                null,
+                'anonymous'
+            )
+</code></pre></div></div>
+<h1 id="6-事件">6. 事件</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>selection:cleared
+selection:updated
+selection:created
+path:created after a drawing operation ends and the path is added
+mouse:down
+mouse:move
+mouse:up
+mouse:down:before on mouse down,event: before the inner fabric logic runs
+mouse:move:before on mouse move,event: before the inner fabric logic runs
+mouse:up:before on mouse up,event: before the inner fabric logic runs
+mouse:over
+mouse:out
+...
+</code></pre></div></div>
+:ET
