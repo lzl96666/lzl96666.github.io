@@ -1,0 +1,43 @@
+I"F<h1 id="sync-修饰符">.sync 修饰符</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--父--&gt;
+&lt;text-document :title.sync="doc.title"&gt;&lt;/text-document&gt;
+
+&lt;!--子--&gt;
+this.$emit('update:title', newTitle)
+</code></pre></div></div>
+
+<h1 id="v-model">v-model</h1>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--父--&gt;
+&lt;text-document v-model="title"&gt;&lt;/text-document&gt;
+
+&lt;!--子--&gt;
+
+model:{
+    prop:'title',
+    event:'change'
+}
+props:{
+    title：String
+}
+
+this.$emit('change',new_title)
+
+</code></pre></div></div>
+
+<h1 id="非-prop-的-attribute">非 Prop 的 Attribute</h1>
+
+<p>$attrs 与 $listeners</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$attrs: 除了props的其他属性
+多层封装
+
+</code></pre></div></div>
+
+<p>inheritAttrs: false</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--默认情况下父作用域的不被认作 props 的 attribute 绑定 (attribute bindings) 
+    将会“回退”且作为普通的 HTML attribute 应用在子组件的根元素上。--&gt;
+
+$attr 显示在根元素上 不会被prop接收
+
+</code></pre></div></div>
+:ET

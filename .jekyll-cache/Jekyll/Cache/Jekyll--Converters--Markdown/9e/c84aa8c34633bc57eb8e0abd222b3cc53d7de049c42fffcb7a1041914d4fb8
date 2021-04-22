@@ -1,0 +1,11 @@
+I"i	<h3 id="transform-文档">transform 文档</h3>
+<blockquote>
+  <p>对于布局受CSS盒子模型控制的元素，transform属性不会影响transformed元素周围的内容流。但是，溢出区域的范围将会考虑上transform元素。这种行为类似于元素通过相对定位发生偏移时的情况。因此，如果overflow属性的值是<code class="language-plaintext highlighter-rouge">scroll</code>或<code class="language-plaintext highlighter-rouge">auto</code>的，滚动条将显示为需要看到在可见区域外转换的内容。</p>
+
+  <p>对于布局受CSS盒子模型控制的元素，除了配置为<code class="language-plaintext highlighter-rouge">none</code>之外，其他的<code class="language-plaintext highlighter-rouge">transform</code>属性值都会创建堆栈上下文。绘制的实现必须在其父栈上下文中它所创建的层中，如果它是带有“z-index: 0”的定位元素，则使用相同的堆叠顺序。如果一个带有<code class="language-plaintext highlighter-rouge">transform</code>的元素还配置了<code class="language-plaintext highlighter-rouge">position</code>属性，那么“z-index”属性将按照<a href="https://www.w3.org/TR/css-transforms-1/#biblio-css2">CSS2</a>描述的被应用，除非“auto”被视为“0”，因为会创建新的堆栈上下文。</p>
+
+  <p>对于布局受CSS盒子模型控制的元素，除了配置为<code class="language-plaintext highlighter-rouge">none</code>之外，其他的<code class="language-plaintext highlighter-rouge">transform</code>属性值都将导致元素成为一个包含块，而其固定定位的后代元素都是以此object作为他们的包含块。</p>
+
+  <p>根元素的<a href="https://www.w3.org/TR/css3-background/#fixed0">Fixed Backgrounds</a>会受到该元素上配置的transform属性的影响。对于受transform影响的所有其他元素(例如，对它们应用transform属性，或者对它们的任何祖先元素应用transform属性)，  <code class="language-plaintext highlighter-rouge">background-attachment</code>属性值为<code class="language-plaintext highlighter-rouge">fixed</code>的元素会被当做它好像有配置<code class="language-plaintext highlighter-rouge">scroll</code>属性一样。其他<code class="language-plaintext highlighter-rouge">background-attachment</code>的计算值不受影响.</p>
+</blockquote>
+:ET

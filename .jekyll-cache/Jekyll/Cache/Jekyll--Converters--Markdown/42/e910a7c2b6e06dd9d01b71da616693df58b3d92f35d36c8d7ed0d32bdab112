@@ -1,0 +1,5 @@
+I"�<h1 id="sync-修饰符">.sync 修饰符</h1>
+<p>```
+<!--父-->
+&lt;text-document :title.sync=”doc.title”&gt;&lt;/text-document&gt;</p>
+:ET
